@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://bi7lxcglf2tnc"]
+
+[ext_resource type="Script" path="res://addons/silent_wolf/Auth/Login.gd" id="1"]
+[ext_resource type="Theme" uid="uid://d2eakbmaefnt6" path="res://addons/silent_wolf/assets/themes/sw_theme.tres" id="1_bbh8k"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://bdptwgknwu18c" path="res://Fonts/king-witch-font/KingWitch-Rpm1v.ttf" id="3_g1nq6"]
+[ext_resource type="FontFile" uid="uid://b4lue4d84htb2" path="res://Fonts/child-witch-font/ChildWitch-z8ABL.ttf" id="3_lc00d"]
+[ext_resource type="Texture2D" uid="uid://bpn62aabunxva" path="res://addons/silent_wolf/assets/gfx/checkbox_checked.png" id="4_ak74a"]
+[ext_resource type="Texture2D" uid="uid://bgs8a50ilk5cj" path="res://addons/silent_wolf/assets/gfx/checkbox_unchecked.png" id="5_3asm1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2el5p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdx0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xugj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7f4f"]
+bg_color = Color(0.0980392, 0.266667, 0.505882, 0.368627)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mfp4"]
+bg_color = Color(0.0980392, 0.266667, 0.505882, 0.862745)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk2gt"]
+bg_color = Color(0.0980392, 0.266667, 0.505882, 0.494118)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ae363"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dq4x4"]
+
+[node name="Login" type="TextureRect"]
+anchors_preset = -1
+anchor_right = 0.989
+anchor_bottom = 0.984
+offset_right = -1898.88
+offset_bottom = -1062.72
+mouse_filter = 2
+theme = ExtResource("1_bbh8k")
+script = ExtResource("1")
+
+[node name="FormContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -65.0
+offset_right = 1135.0
+offset_bottom = 699.0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="UsernameContainer" type="HBoxContainer" parent="FormContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Username" type="LineEdit" parent="FormContainer/UsernameContainer"]
+modulate = Color(1, 1, 1, 0.623529)
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g1nq6")
+placeholder_text = "Username"
+max_length = 30
+
+[node name="PasswordContainer" type="HBoxContainer" parent="FormContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Password" type="LineEdit" parent="FormContainer/PasswordContainer"]
+modulate = Color(1, 1, 1, 0.623529)
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g1nq6")
+placeholder_text = "Password"
+max_length = 30
+secret = true
+
+[node name="LinkButton" type="LinkButton" parent="FormContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 33
+text = "Forgot Password?"
+underline = 1
+
+[node name="LinkButton2" type="LinkButton" parent="FormContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 33
+text = "Register"
+underline = 1
+
+[node name="RememberMeCheckBox" type="CheckBox" parent="FormContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 40
+theme_override_icons/checked = ExtResource("4_ak74a")
+theme_override_icons/unchecked = ExtResource("5_3asm1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2el5p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gdx0q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7xugj")
+text = "Stay signed in for 30 days"
+expand_icon = true
+
+[node name="ErrorMessage" type="Label" parent="FormContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.301961, 0.301961, 1)
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="LoginButton" parent="FormContainer" instance=ExtResource("2")]
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.85098, 0.690196, 0.25098, 1)
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_j7f4f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mfp4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vk2gt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ae363")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dq4x4")
+text = "Submit"
+
+[node name="ProcessingLabel" type="Label" parent="FormContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lc00d")
+theme_override_font_sizes/font_size = 40
+text = "Processing..."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="FormContainer/LinkButton" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="FormContainer/LinkButton2" to="." method="_on_link_button_2_pressed"]
+[connection signal="pressed" from="FormContainer/LoginButton" to="." method="_on_LoginButton_pressed"]

@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://bo37wn5msx4ck"]
+
+[ext_resource type="Script" path="res://Scripts/QuestionManager.gd" id="1_qlsdx"]
+[ext_resource type="FontFile" uid="uid://k128qfbnuk" path="res://Fonts/upheaval (2)/upheavtt.ttf" id="2_6taem"]
+[ext_resource type="FontFile" uid="uid://b4lue4d84htb2" path="res://Fonts/child-witch-font/ChildWitch-z8ABL.ttf" id="2_gnqec"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="2_vx2bf"]
+[ext_resource type="FontFile" uid="uid://bdptwgknwu18c" path="res://Fonts/king-witch-font/KingWitch-Rpm1v.ttf" id="3_jkceg"]
+[ext_resource type="Texture2D" uid="uid://c35jbmcdqa0aq" path="res://Art/Lucid V1.2/PNG/Flat/64/Chevron-Arrow-Left.png" id="3_jxawc"]
+[ext_resource type="Texture2D" uid="uid://brp1pdt2gotv5" path="res://Art/Lucid V1.2/PNG/Flat/64/Redo.png" id="3_lnmxp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4n0a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1ask"]
+bg_color = Color(0.0196078, 0.588235, 0.45098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45d3i"]
+
+[node name="PracticeQuestion" type="Node2D"]
+script = ExtResource("1_qlsdx")
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 104.0
+offset_right = 640.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("2_gnqec")
+theme_override_font_sizes/font_size = 50
+text = "Player Name
+"
+
+[node name="QuestionLabel" type="Label" parent="."]
+offset_left = 199.0
+offset_top = 234.0
+offset_right = 1023.0
+offset_bottom = 282.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_gnqec")
+theme_override_font_sizes/font_size = 50
+text = "Question
+"
+horizontal_alignment = 1
+
+[node name="AnswerInput" type="LineEdit" parent="."]
+offset_left = 320.0
+offset_top = 353.0
+offset_right = 896.0
+offset_bottom = 414.0
+theme_override_fonts/font = ExtResource("3_jkceg")
+theme_override_font_sizes/font_size = 20
+
+[node name="SubmitButton" type="Button" parent="."]
+offset_left = 486.0
+offset_top = 446.0
+offset_right = 728.0
+offset_bottom = 509.0
+theme_override_colors/font_hover_color = Color(0.85098, 0.690196, 0.25098, 1)
+theme_override_fonts/font = ExtResource("2_gnqec")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p4n0a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l1ask")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_45d3i")
+text = "SUBMIT
+"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 879.0
+offset_top = 114.0
+offset_right = 1079.0
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("2_gnqec")
+theme_override_font_sizes/font_size = 50
+text = "Score"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TryAgainButton" type="Button" parent="."]
+visible = false
+offset_left = 576.0
+offset_top = 416.0
+offset_right = 636.0
+offset_bottom = 480.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_6taem")
+text = "
+"
+icon = ExtResource("3_lnmxp")
+flat = true
+
+[node name="DifficultyLabel" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 40.0
+offset_right = 534.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_gnqec")
+theme_override_font_sizes/font_size = 40
+text = "Difficulty"
+
+[node name="BackButton" parent="." instance=ExtResource("2_vx2bf")]
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 108.0
+offset_bottom = 120.0
+text = ""
+icon = ExtResource("3_jxawc")
+flat = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
